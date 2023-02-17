@@ -85,18 +85,35 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            //Text to show steps of set in the last seven days
-            Text(stepsLastSevenDays != nil ? "Steps set last 7 days: \(stepsLastSevenDays!)" : "Steps set last 7 days: 0").padding()
-            
-            //Text to show steps from this morning
-            Text(stepsThisMorning != nil ? "Steps set this morning: \(stepsThisMorning!)" : "Steps set this morning: 0").padding()
-            
-            //Text to show steps from this day
-            Text(stepsThisDay != nil ? "Steps set this day: \(stepsThisDay!)" : "Steps set this day: 0").padding()
-            
-            //Text to show steps from device boot till now
-            Text(stepsFromBoot != nil ? "Steps set from boot of device: \(stepsFromBoot!)" : "Steps set from boot of device: 0").padding()
-            
+            Text("Step counter stats:").font(.title)
+            List {
+                HStack {
+                    Text("Steps set last 7 days:")
+                    Spacer()
+                    Text(stepsLastSevenDays != nil ?  "\(stepsLastSevenDays!)" : "0")
+                }.padding()
+                
+                HStack {
+                    Text("Steps set this morning:")
+                    Spacer()
+                    Text(stepsLastSevenDays != nil ?  "\(stepsThisMorning!)" : "0")
+                }.padding()
+                
+                HStack {
+                    Text("Steps set this day:")
+                    Spacer()
+                    Text(stepsThisDay != nil ?  "\(stepsThisDay!)" : "0")
+                }.padding()
+                
+                HStack {
+                    Text("Steps set from boot of device:")
+                    Spacer()
+                    Text(stepsFromBoot != nil ?  "\(stepsFromBoot!)" : "0")
+                }.padding()
+            }
+            .refreshable {
+                initializePedometer()
+            }
             .onAppear {
                 initializePedometer()
             }

@@ -96,7 +96,7 @@ struct ContentView: View {
                 HStack {
                     Text("Steps set this morning:")
                     Spacer()
-                    Text(stepsLastSevenDays != nil ?  "\(stepsThisMorning!)" : "0")
+                    Text(stepsThisMorning != nil ?  "\(stepsThisMorning!)" : "0")
                 }.padding()
                 
                 HStack {
